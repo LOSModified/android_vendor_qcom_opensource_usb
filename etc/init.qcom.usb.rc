@@ -71,7 +71,7 @@ on charger
     setprop sys.usb.config mass_storage
     setprop sys.usb.configfs 1
 
-on post-fs
+on post-fs-data
     mount configfs none /config
     mkdir /config/usb_gadget/g1 0770
     mkdir /config/usb_gadget/g2 0770
@@ -141,7 +141,7 @@ on post-fs
     write /config/usb_gadget/g1/strings/0x409/product ${vendor.usb.product_string}
     write /config/usb_gadget/g2/strings/0x409/product ${vendor.usb.product_string}
 
-on post-fs && property:vendor.usb.use_ffs_mtp=1
+on post-fs-data && property:vendor.usb.use_ffs_mtp=1
    mkdir /config/usb_gadget/g1/functions/ffs.mtp
    mkdir /config/usb_gadget/g1/functions/ffs.ptp
    mkdir /dev/usb-ffs/mtp 0770 mtp mtp
